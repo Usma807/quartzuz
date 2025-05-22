@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loader Test</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/loader.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .test-button {
+            display: block;
+            margin: 20px auto;
+            padding: 15px 30px;
+            background: #8BC34A;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        .test-button:hover {
+            background: #689F38;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(139, 195, 74, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader-container">
+        <div class="loader">
+            <div class="loader-circle"></div>
+            <div class="loader-circle"></div>
+            <div class="loader-circle"></div>
+            <div class="loader-circle"></div>
+            <div class="loader-text">QUARTZ</div>
+            <div class="loader-particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <button class="test-button" onclick="simulateLoading()">Loader-ni tekshirish</button>
+    </div>
+
+    <script>
+        // Loader-ni ko'rsatish funksiyasi
+        function showLoader() {
+            const loader = document.querySelector('.loader-container');
+            loader.style.display = 'flex';
+            loader.classList.remove('fade-out');
+        }
+
+        // Loader-ni yashirish funksiyasi
+        function hideLoader() {
+            const loader = document.querySelector('.loader-container');
+            loader.classList.add('fade-out');
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 500);
+        }
+
+        // Yuklashni simulyatsiya qilish
+        function simulateLoading() {
+            showLoader();
+            setTimeout(() => {
+                hideLoader();
+            }, 3000); // 3 sekundlik yuklash
+        }
+
+        // Sahifa yuklanganda
+        document.addEventListener('DOMContentLoaded', function() {
+            window.addEventListener('load', function() {
+                const loader = document.querySelector('.loader-container');
+                loader.classList.add('fade-out');
+                
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>
